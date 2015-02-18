@@ -1,0 +1,8 @@
+
+.opindo.admin label {display:block}
+.opindo.admin th, td {text-align: left;}
+.opindo.admin td {background: #ededed; padding:5px 10px;}
+.opindo.admin .i {width:20px; display:inline;}
+.opindo.admin th {background: #cccccc; padding:5px 10px;}
+.opindo.admin .hidden {visibility: hidden;}
+.opindo.admin img {display: block; width:200px;}

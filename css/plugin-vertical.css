@@ -1,0 +1,157 @@
+body {
+
+}
+
+.opindo-wrap {
+    background: #fff;
+    border: 2px solid #dbdbdb;
+    display: block;
+    font-family: TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, serif;
+    height: 278px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 198px;
+}
+.opindo-main {
+    min-height: 199px;
+    margin: 0;
+    padding: 16px 10px 0 11px;
+}
+.opindo-main p {
+    color: #575d70;
+    font-size: 0.95em;
+    line-height: 1.25em;
+    margin: 0 0 1em 0;
+    padding: 0;
+}
+p.opindo-header-p {
+    font-size: 0.8em;
+    text-transform: uppercase;
+}
+p.opindo-middle-p {
+    font-size: 0.9em;
+    margin: 80px 0 0.75em 0;
+}
+p.opindo-footer-p {
+    font-size: 0.9em;
+}
+.opindo-radio-buttons label {
+    color: #575d70;
+    display: block;
+    font-size: 0.65em;
+    letter-spacing: 0.1em;
+    margin: 0 0 8px 0;
+    text-transform: uppercase;
+    width:100%;
+}
+.opindo-radio-buttons input[type="radio"] {
+    display:none;
+}
+.opindo-radio-buttons input[type="radio"] + label span {
+    display:inline-block;
+    float: right;
+    width:16px;
+    height:15px;
+    background:url(../images/opindo-radio-button.png) left top no-repeat;
+}
+.opindo-radio-buttons input[type="radio"]:checked + label span {
+    background:url(../images/opindo-radio-button.png) left -15px no-repeat;
+    color: #6170ff;
+}
+.opindo-buttons {
+    display: block;
+    height: 30px;
+    margin: 0 0 1px 0;
+    position: absolute;
+    bottom: 32px;
+    width: 198px;
+}
+.opindo-buttons button {
+    background: #efefef;
+    border: 0;
+    color: #575d70;
+    cursor: pointer;
+    float: left;
+    font-family: TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, serif;
+    height: 30px;
+    text-transform: uppercase;
+    width: 98px;
+}
+.opindo-buttons .opindo-social {
+    background: #efefef;
+    border-left: 1px solid #dbdbdb;
+    display: block;
+    float: left;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    width: 99px;
+}
+.opindo-buttons .opindo-social a {
+    background: #efefef url(../images/opindo-facebook.png) no-repeat center;
+    display: block;
+    height: 30px;
+    margin: 0 4px 0 5px;
+    padding: 0;
+    width: 90px;
+}
+.opindo-buttons .opindo-social span {
+    display: none;
+}
+.opindo-footer {
+    background: #696f89 url(../images/opindo-logo.png) no-repeat;
+    color: #fff;
+    display: block;
+    height: 32px;
+    position: absolute;
+    bottom: 0px;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    width: 198px;
+}
+.opindo-footer span {
+    display:inline-block;
+    font-size: 0.8em;
+    line-height: 32px;
+    margin: 0;
+    padding: 0 16px 0 0;
+}
+#opindo-modal {
+    position:absolute;
+    background: #f7f7f7;
+    border-bottom: 1px solid #dddddd;
+    border-top: 1px solid #dddddd;
+    width: 198px;
+    bottom:63px;
+    z-index: 1;
+}
+
+#opindo-modal-content {
+    padding:18px 12px 12px 12px;
+}
+#opindo-modal-content a{
+    color:#5d5d5d;
+    display: block;
+    font-size: 0.8em;
+    margin: 0 0 0.6em 0;
+    padding: 0;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+#opindo-modal-content a:hover {
+    color: #6170ff;
+}
+#opindo-close {
+    position:absolute;
+    background:url(../images/opindo-close.png) 4px 4px no-repeat;
+    width:8px;
+    height:8px;
+    display:block;
+    text-indent:-9999px;
+    padding: 4px;
+    top: 5px;
+    right: 5px;
+}
