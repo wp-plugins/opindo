@@ -72,10 +72,10 @@
 
 	function unique_tags($questions, $relationship, $prop = NULL) {
 		$prop = $prop == NULL ? 'name' : $prop;
-		$tags = [];
+		$tags;
 		foreach($questions as $object) {
 			foreach($object->$relationship as $item) {
-				if(!in_array($item->$prop, $tags)) $tags[] = $item->$prop;
+				if(!in_array($item->$prop, $tags)) $tags = $item->$prop;
 			}
 		}
 
