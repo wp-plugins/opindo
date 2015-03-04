@@ -4,7 +4,7 @@
 		Plugin URI: http://www.opindo.com/
 		Description: Integrate the Opindo platform with your Wordpress site!
 		Version: 1.0
-		Author: Hannah J Tinkler
+		Author: Opindo Developer
 		License: GPLv2 or later
 	*/
 
@@ -41,9 +41,6 @@
 	}
 
 	function banner_init() {
-		if(isset($_GET['page'])) {
-			if($_GET['page'] == 'opindo-register-login') return opindo_register_login();
-		}
 		if (!isset($_SESSION['user_id'])) {
 			$me = new Me();
 			$me->get_opindo_user_id();
@@ -52,9 +49,6 @@
 
 	function opindo_init() {
 		if(isset($_GET['page'])) {
-			if(strpos($_GET['page'], 'opindo') !== false) {
-
-			}
 			if($_GET['page'] != 'opindo-add-question') echo '<script>localStorage.removeItem("data")</script>';
 			if($_GET['page'] != 'opindo-edit-question') echo '<script>localStorage.removeItem("new_data")</script>';
 		}
@@ -66,17 +60,21 @@
 	}
 
 	function opindo_scripts() {
-		wp_enqueue_script('jquery');
-		wp_register_script('general', plugin_dir_url(__FILE__) .'js/general.js', array("jquery"));
-		wp_enqueue_script('general');
+		if ( is_admin() ) {
+			wp_enqueue_script('jquery');
+			wp_register_script('general', OPINDO__PLUGIN_DIR . '/js/general.js', array("jquery"));
+			wp_enqueue_script('general');
+		}
 	}
 
 	function opindo_styles() {
-		wp_enqueue_style('general', plugins_url('css/general.css', __FILE__));
+		if ( is_admin() ) {
+			wp_enqueue_style('general', OPINDO__PLUGIN_DIR . '/css/general.css');
+		}
 	}
 
 	function opindo_admin_menu() {
-		$image = '../wp-content/plugins/opindo_plugin/images/logo.png';
+		$image = OPINDO__PLUGIN_DIR . '/images/logo.png';
 		//Admin Menu
 	    add_menu_page('Opindo Admin', 'Opindo', 'manage_options', 'opindo-admin', 'opindo_view_my_questions', $image, 6 );
 	    add_submenu_page('opindo-admin', 'My Questions', 'My Questions', 'manage_options', 'opindo-admin', 'opindo_view_my_questions');
@@ -86,7 +84,6 @@
 	    //Invisible Menu
 	    add_submenu_page('opindo-trending', 'Question Overview', 'Question Overview', 'manage_options', 'opindo-question-overview', 'opindo_view_question_overview');
 	    add_submenu_page('opindo-trending', 'Edit Question', 'Edit Question', 'manage_options', 'opindo-edit-question', 'opindo_view_edit_question');
-	    add_submenu_page('opindo-trending', 'Register Login', 'Register Login', 'manage_options', 'opindo-register-login', 'opindo_register_login');
 	}
 
 	function opindo_get_view($view, array $variables = NULL) {
@@ -124,12 +121,6 @@
 		}
 	}
 
-	function opindo_register_login() {
-		$origin = $_SESSION['origin'];
-		unset($_SESSION['origin']);
-		wp_redirect($origin);
-	}
-
 	function opindo_banner_question($content) {
 		if(!is_home()) {
 			// get question
@@ -137,25 +128,30 @@
 			$result = Api::getData($url);
 			$question = json_decode($result, true);
 
-			if(count($question['question']) > 0) opindo_get_banner($content, 'banner_question', array('question' => $question['question']));
+			if(count($question['question']) > 0) {
+				opindo_get_banner($content, 'banner_question', array('question' => $question['question']));
+			}
+			else {
+				return $content;
+			}
 		}
+		return $content;
 	}
 
 	function wpb_adding_scripts() {
 		if(!is_home()) {
 			wp_enqueue_script( 'jquery' );
-			wp_register_script('google-charts', plugins_url('js/google-charts.js', __FILE__),'1.0', false);
+			wp_register_script('google-charts', OPINDO__PLUGIN_DIR . '/js/google-charts.js','1.0', false);
 			wp_enqueue_script('google-charts');
-			wp_register_script('opindo-chart', plugins_url('js/chart-config.js', __FILE__),'1.0', false);
+			wp_register_script('opindo-chart', OPINDO__PLUGIN_DIR . '/js/chart-config.js','1.0', false);
 			wp_enqueue_script('opindo-chart');
-			wp_register_script('opindo-modal', plugins_url('js/opindo-modal.js', __FILE__),'1.0', false);
+			wp_register_script('opindo-modal', OPINDO__PLUGIN_DIR . '/js/opindo-modal.js','1.0', false);
 			wp_enqueue_script('opindo-modal');
 		}
-		wp_register_style('opindo-css', plugins_url('css/plugin-horizontal.css', __FILE__),'1.0', false);
+		wp_register_style('opindo-css', OPINDO__PLUGIN_DIR . '/css/plugin-horizontal.css','1.0', false);
 		wp_enqueue_style('opindo-css');
 	}
 	add_action( 'wp_enqueue_scripts', 'wpb_adding_scripts' );
-
 
 	function opindo_view_my_questions() {
 		$url = '/questions/get/' . $_SESSION['user_id'];
