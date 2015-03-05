@@ -62,19 +62,19 @@
 	function opindo_scripts() {
 		if ( is_admin() ) {
 			wp_enqueue_script('jquery');
-			wp_register_script('general', OPINDO__PLUGIN_DIR . '/js/general.js', array("jquery"));
+			wp_register_script('general', OPINDO__PLUGIN_URL . 'js/general.js', array("jquery"));
 			wp_enqueue_script('general');
 		}
 	}
 
 	function opindo_styles() {
 		if ( is_admin() ) {
-			wp_enqueue_style('general', OPINDO__PLUGIN_DIR . '/css/general.css');
+			wp_enqueue_style('general', OPINDO__PLUGIN_URL . 'css/general.css');
 		}
 	}
 
 	function opindo_admin_menu() {
-		$image = OPINDO__PLUGIN_DIR . '/images/logo.png';
+		$image = OPINDO__PLUGIN_URL . 'images/logo.png';
 		//Admin Menu
 	    add_menu_page('Opindo Admin', 'Opindo', 'manage_options', 'opindo-admin', 'opindo_view_my_questions', $image, 6 );
 	    add_submenu_page('opindo-admin', 'My Questions', 'My Questions', 'manage_options', 'opindo-admin', 'opindo_view_my_questions');
@@ -141,14 +141,14 @@
 	function wpb_adding_scripts() {
 		if(!is_home()) {
 			wp_enqueue_script( 'jquery' );
-			wp_register_script('google-charts', OPINDO__PLUGIN_DIR . '/js/google-charts.js','1.0', false);
+			wp_register_script('google-charts', OPINDO__PLUGIN_URL . 'js/google-charts.js','1.0', false);
 			wp_enqueue_script('google-charts');
-			wp_register_script('opindo-chart', OPINDO__PLUGIN_DIR . '/js/chart-config.js','1.0', false);
+			wp_register_script('opindo-chart', OPINDO__PLUGIN_URL . 'js/chart-config.js','1.0', false);
 			wp_enqueue_script('opindo-chart');
-			wp_register_script('opindo-modal', OPINDO__PLUGIN_DIR . '/js/opindo-modal.js','1.0', false);
+			wp_register_script('opindo-modal', OPINDO__PLUGIN_URL . 'js/opindo-modal.js','1.0', false);
 			wp_enqueue_script('opindo-modal');
 		}
-		wp_register_style('opindo-css', OPINDO__PLUGIN_DIR . '/css/plugin-horizontal.css','1.0', false);
+		wp_register_style('opindo-css', OPINDO__PLUGIN_URL . 'css/plugin-horizontal.css','1.0', false);
 		wp_enqueue_style('opindo-css');
 	}
 	add_action( 'wp_enqueue_scripts', 'wpb_adding_scripts' );
