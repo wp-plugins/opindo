@@ -1,20 +1,23 @@
 .opindo-wrap {
     background: #fff;
     border: 2px solid #dbdbdb;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
     clear: both;
     display: inline-block;
     font-family: 'Open Sans', Arial, 'Helvetica Neue', Helvetica, sans-serif;
     font-size: 16px;
-    height: 203px;
+    height: 303px;
     line-height: 1.0em;
     margin: 0;
     overflow: hidden;
     padding: 0;
     position: relative;
-    width: 339px;
+    width: 100%;
 }
 .opindo-main {
-    height: 151px;
+    height: 251px;
     margin: 0;
     padding: 8px;
     position: relative;
@@ -37,7 +40,7 @@ p.opindo-middle-p {
     position: absolute;
     right: 17px;
     top: 8px;
-    width: 148px;
+    width: 248px;
 }
 p.opindo-footer-p {
     font-size: 0.8em;
@@ -46,7 +49,7 @@ p.opindo-footer-p {
     position: absolute;
     right: 17px;
     top: 62px;
-    width: 148px;
+    width: 248px;
 }
 .opindo-radio-buttons {
     margin-top: 1em;
@@ -75,13 +78,14 @@ p.opindo-footer-p {
     background:url(../images/opindo-radio-button.png) left -15px no-repeat;
     color: #6170ff;
 }
-.opindo-buttons {
+.opindo-buttons, .opindo-buttons-full {
+    background: #efefef;
     display: block;
     height: 25px;
     margin: 0 0 1px 0;
     position: absolute;
     bottom: 25px;
-    width: 339px;
+    width: 100%;
 }
 .opindo-buttons button {
     background: #efefef;
@@ -95,17 +99,20 @@ p.opindo-footer-p {
     text-transform: uppercase;
     width: 167px;
 }
-.opindo-buttons .opindo-social {
+.opindo-social {
     background: #efefef;
     border-left: 1px solid #dbdbdb;
     display: block;
-    float: left;
+    float: right;
     height: 25px;
     margin: 0;
     padding: 0;
     width: 170px;
 }
-.opindo-buttons .opindo-social .opindo-facebook {
+.opindo-buttons-full .opindo-social {
+    border-left: 0;
+}
+.opindo-social .opindo-facebook {
     background: #efefef url(../images/opindo-facebook.png) no-repeat center 1px;
     border: 0;
     display: block;
@@ -115,7 +122,7 @@ p.opindo-footer-p {
     padding: 0;
     width: 30px;
 }
-.opindo-buttons .opindo-social .opindo-twitter {
+.opindo-social .opindo-twitter {
     background: #efefef url(../images/opindo-twitter.png) no-repeat center 1px;
     border: 0;
     display: block;
@@ -125,8 +132,14 @@ p.opindo-footer-p {
     padding: 0;
     width: 30px;
 }
-.opindo-buttons .opindo-social span {
+.opindo-social span {
     display: none;
+}
+.opindo-buttons-full .opindo-facebook {
+    float: right;
+}
+.opindo-buttons-full .opindo-twitter {
+    float: right;
 }
 .opindo-footer {
     background: #696f89 url(../images/opindo-logo.png) no-repeat left -3px;
@@ -138,9 +151,9 @@ p.opindo-footer-p {
     margin: 0;
     padding: 0;
     text-align: right;
-    width: 339px;
+    width: 100%;
 }
-.opindo-footer a {
+.opindo-footer a#opindo-website {
     color: #fff;
     display: block;
     width: 100%;
@@ -157,7 +170,10 @@ p.opindo-footer-p {
     background: #f7f7f7;
     border-bottom: 1px solid #dddddd;
     border-top: 1px solid #dddddd;
-    width: 336px;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    width: 100%;
     bottom:52px;
     z-index: 1;
 }
@@ -192,11 +208,12 @@ p.opindo-footer-p {
     right: 8px;
 }
 
-.opindo-facebook-login{
+a#opindo-facebook-login{
     background: url(../images/facebook-login.png);
     display: block;
     height: 28px;
     margin: 0 0 8px 0;
+    cursor: pointer;
     text-indent: -9999px;
     width: 148px;
 }
@@ -209,13 +226,31 @@ p.opindo-footer-p {
     width: 148px;
 }
 #opindo-piechart {
-    height:100px;
+    height:190px;
+    overflow: hidden;
     position: absolute;
-    width:323px;
+    width:220px;
 }
-.opindo-votes {
+#opindo-legend {
+    float: right;
+    width: 180px;
+}
+#opindo-legend li:before {
+    content: none;
+}
+#opindo-legend li {
+    float: right;
+    font-size: 12px;
+    line-height: 1.2em;
+    list-style: none;
+    text-align: right;
+    width: 200px;
+}
+p.opindo-votes {
+    bottom: 40px;
+    margin:0;
     position: absolute;
-    bottom: 20px;
+    right: 10px;
 }
 .opindo-home-list {
     font-size: 10px;

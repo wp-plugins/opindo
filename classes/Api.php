@@ -10,6 +10,11 @@
 		private $action = '';
 		private $params = '';
 
+		public static function login_short($method, $origin) {
+			$url = Api::$url . '/'. $method . '?' . 'api_key=' . Api::$api_key . '&redirect=' . $origin;
+			return $url;
+		}
+
 		public static function login($method, $origin, $question_id, $answer_id) {
 			$url = Api::$url . '/'. $method . '?' . 'api_key=' . Api::$api_key . '&redirect=' . $origin . '&question_id=' . $question_id . '&answer_id=' . $answer_id;
 			return $url;

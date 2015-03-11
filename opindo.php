@@ -135,7 +135,9 @@
 				return $content;
 			}
 		}
-		return $content;
+		else {
+			return $content;
+		}
 	}
 
 	function wpb_adding_scripts() {
@@ -145,8 +147,8 @@
 			wp_enqueue_script('google-charts');
 			wp_register_script('opindo-chart', OPINDO__PLUGIN_URL . 'js/chart-config.js','1.0', false);
 			wp_enqueue_script('opindo-chart');
-			wp_register_script('opindo-modal', OPINDO__PLUGIN_URL . 'js/opindo-modal.js','1.0', false);
-			wp_enqueue_script('opindo-modal');
+			wp_register_script('opindo-plugin', OPINDO__PLUGIN_URL . 'js/opindo-plugin.js','1.0', false);
+			wp_enqueue_script('opindo-plugin');
 		}
 		wp_register_style('opindo-css', OPINDO__PLUGIN_URL . 'css/plugin-horizontal.css','1.0', false);
 		wp_enqueue_style('opindo-css');
