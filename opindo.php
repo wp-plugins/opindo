@@ -56,6 +56,7 @@
 			$me = new Me();
 			$me->get_opindo_user_id();
 		}
+		opindo_settings_init();
 		add_meta_box('feature_question', 'Add a question', 'opindo_view_choose_question', 'post', 'side', 'high', '');
 	}
 
@@ -71,6 +72,36 @@
 		if ( is_admin() ) {
 			wp_enqueue_style('general', OPINDO__PLUGIN_URL . 'css/general.css');
 		}
+	}
+
+	function opindo_settings_init() {
+	    register_setting( 'pluginPage', 'opindo_settings' );
+
+	    add_settings_section(
+	        'opindo_pluginPage_section',
+	        __( 'Blog Posts Questionnaire', 'opindo' ),
+	        'opindo_settings_section_callback',
+	        'pluginPage'
+	    );
+
+	    add_settings_field(
+	        'opindo_facebook_app_id',
+	        __( 'Facebook AppId', 'opindo' ),
+	        'opindo_facebook_app_id_render',
+	        'pluginPage',
+	        'opindo_pluginPage_section'
+	    );
+	}
+
+	function opindo_facebook_app_id_render() {
+	    $options = get_option( 'opindo_settings' );
+	    ?>
+	    <input type='text' name='opindo_settings[opindo_facebook_app_id]' value='<?php echo $options['opindo_facebook_app_id']; ?>'>
+	    <?php
+	}
+
+	function opindo_settings_section_callback() {
+	    echo __( 'Enter AppId to enable Opindo user authentication', 'opindo' );
 	}
 
 	function opindo_admin_menu() {

@@ -35,13 +35,13 @@ $current_url = home_url(add_query_arg(array(),$wp->request));
 </div>
 <!-- Facebook Login -->
 <?php
-    $appId = "796171940470738";
+    $opindo_settings = get_option( 'opindo_settings' );
     $fbPermissions = "public_profile,email";
 ?>
 
 <div id="opindo-sign-in" class="opindo-wrap">
     <div class="opindo-main">
-        <input type="hidden" value="<?php echo $appId; ?>" id="facebook-app-id">
+        <input type="hidden" value="<?php echo $opindo_settings['opindo_facebook_app_id']; ?>" id="facebook-app-id">
         <input type="hidden" value="<?php echo OPINDO__PLUGIN_URL; ?>channel.php" id="channel-url">
         <input type="hidden" value="<?php echo $fbPermissions; ?>" id="facebook-scope">
         <input type="hidden" value="<?php echo $_SERVER['REMOTE_ADDR']; ?>" id="ip-address">
