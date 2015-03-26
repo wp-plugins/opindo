@@ -25,7 +25,7 @@
 	//Configuration
 	add_action('init', 'banner_init');
 	add_action('admin_init', 'opindo_init');
-	add_action('loop_start', 'opindo_home_banner');
+	//add_action('loop_start', 'opindo_home_banner'); // this is not working
 	add_action('admin_enqueue_scripts', 'opindo_scripts');
 	add_action('admin_enqueue_scripts', 'opindo_styles');
 	add_action('admin_menu', 'opindo_admin_menu');
@@ -139,18 +139,18 @@
 		opindo_get_view('admin_user_settings', array('show_banner' => $plugin_homepage_banner));
 	}
 
-	function opindo_home_banner($classes) {
-		$plugin_homepage_banner = Me::get_opindo_plugin_homepage_banner();
-		if($plugin_homepage_banner) {
-			$url = '/questions/get/' . $_SESSION['user_id'];
-			$result = Api::getData($url);
-			$questions = json_decode($result, true);
+	// function opindo_home_banner($content) {
+	// 	if(is_home()) {
+	// 		$plugin_homepage_banner = Me::get_opindo_plugin_homepage_banner();
+	// 		if($plugin_homepage_banner) {
+	// 			$url = '/questions/get/' . $_SESSION['user_id'];
+	// 			$result = Api::getData($url);
+	// 			$questions = json_decode($result, true);
 
-			if($_SERVER["REQUEST_URI"] == '/' || $_SERVER["REQUEST_URI"] = '') {
-			 	if(count($questions['questions']) > 0) opindo_get_banner(NULL, 'banner_homepage', $questions);
-			}
-		}
-	}
+	// 		 	if(count($questions['questions']) > 0) opindo_get_banner(NULL, 'banner_homepage', $questions);
+	// 		}
+	// 	}
+	// }
 
 	function opindo_banner_question($content) {
 		if(!is_home()) {
